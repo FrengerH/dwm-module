@@ -7,5 +7,10 @@
     {
       dwm-module = import ./dwm;
     };
+  let
+
+  in {
+    dwm-module = import ./dwm;
+  }
 }
 
