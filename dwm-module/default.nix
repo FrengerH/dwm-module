@@ -64,10 +64,8 @@ in
     programs = {
       tmux = import ../programs/tmux.nix { pkgs = pkgs; };
       fish = import ../programs/fish.nix;    
+      rofi = import ../programs/rofi.nix { config = config; pkgs = pkgs; };
       nm-applet.enable = true;
-      rofi = {
-        theme = "${rofiTheme}";
-      };
     };
 
     nixpkgs.overlays = map import [ 
