@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 let
+  rofiTheme = builtins.toFile "rofiTheme.rasi" (builtins.readFile ../theme/rofi-theme.rasi);
 in
   {
     nix.extraOptions = ''
@@ -48,7 +49,7 @@ in
       st
       git
       feh
-      rofi
+      # rofi
       lightlocker
       xorg.xrandr
       autorandr
@@ -64,6 +65,9 @@ in
       tmux = import ../programs/tmux.nix { pkgs = pkgs; };
       fish = import ../programs/fish.nix;    
       nm-applet.enable = true;
+      rofi = {
+        theme = ${rofiTheme}
+      };
     };
 
     nixpkgs.overlays = map import [ 
@@ -71,6 +75,6 @@ in
       ../overlays/st.nix
       ../overlays/tmux-dracula.nix
       ../overlays/dwmblocks.nix
-      ../overlays/rofi.nix
+      # ../overlays/rofi.nix
     ];
 }
