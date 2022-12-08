@@ -3,10 +3,10 @@ self: super:
 with super;
 
 let
-  powerMenu = import ./scripts/dwmblocks/power-menu.nix { inherit pkgs; };
-  calendar = super.writeShellScriptBin "calendar" (builtins.readFile ./scripts/dwmblocks/calendar.sh);
-  power = super.writeShellScriptBin "power" (builtins.readFile ./scripts/dwmblocks/power.sh);
-  power2 = super.writeShellScriptBin "power2" (builtins.readFile ./scripts/dwmblocks/power2.sh);
+  powerMenu = import ../scripts/dwmblocks/power-menu.nix { inherit pkgs; };
+  calendar = super.writeShellScriptBin "calendar" (builtins.readFile ../scripts/dwmblocks/calendar.sh);
+  power = super.writeShellScriptBin "power" (builtins.readFile ../scripts/dwmblocks/power.sh);
+  power2 = super.writeShellScriptBin "power2" (builtins.readFile ../scripts/dwmblocks/power2.sh);
 
   configFile = super.writeText "config.h" ''
     static Block blocks[] = {
