@@ -5,7 +5,7 @@
 
   outputs = { self, nixpkgs, ... }:
     {
-      dwm = import ./dwm;
+      dwm-module = import ./dwm;
     };
 }
 
