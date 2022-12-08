@@ -20,10 +20,10 @@ in
       ./patches/st.diff
     ];
 
-    postInstall = oldAttrs.postInstall or "" + ''
-      wrapProgram $out/bin/st \
-        --add-flags "-e ${startupScript}"
-    '';
+    # postInstall = oldAttrs.postInstall or "" + ''
+    #   wrapProgram $out/bin/st \
+    #     --add-flags "-e ${startupScript}"
+    # '';
 
     # postBuild = ''
     #   wrapProgram $out/bin/st \
