@@ -7,6 +7,8 @@ let
 in
 {
   st = super.st.overrideAttrs(olsattrs: rec {
+    buildInputs = oldAttrs.buildInputs or [] ++ [ pkgs.makeWrapper ];
+
     src = super.fetchFromGitHub {
       owner = "FrengerH";
       repo = "st";
