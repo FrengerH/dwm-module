@@ -11,7 +11,7 @@ in
 
     postInstall = oldAttrs.postInstall or "" + ''
       wrapProgram $out/bin/rofi \
-        --append-flags "-theme ${theme}" \
+        --add-flags "-theme ${theme}" \
     '';
 
   });
