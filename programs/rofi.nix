@@ -8,7 +8,6 @@
     font = "FiraCode Nerd Font Medium 25";
     theme = let
       # Neccessary to avoid quoting non-string values
-      inherit (config.lib.formats.rasi) mkLiteral;
     in {
       # Taken from https://github.com/Murzchnvok/rofi-collection/blob/master/gruvbox/gruvbox.rasi
 
