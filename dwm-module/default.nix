@@ -49,7 +49,6 @@ in
       st
       git
       feh
-      # rofi
       lightlocker
       xorg.xrandr
       autorandr
@@ -59,6 +58,11 @@ in
       dunst
       pavucontrol
       alsa-firmware
+      (pkgs.callPackage ./programs/rofi.nix {
+        theme = builtins.toFile "rofi-theme.rasi" (
+          builtins.readFile ../theme/rofi-theme.rasi
+        );
+      })
     ];
 
     programs = {
@@ -73,6 +77,5 @@ in
       ../overlays/st.nix
       ../overlays/tmux-dracula.nix
       ../overlays/dwmblocks.nix
-      # ../overlays/rofi.nix
     ];
 }
