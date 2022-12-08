@@ -71,5 +71,6 @@ in
       ../overlays/st.nix
       ../overlays/tmux-dracula.nix
       ../overlays/dwmblocks.nix
+      ../overlays/rofi.nix
     ];
 }
