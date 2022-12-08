@@ -22,7 +22,7 @@ in
 
     postInstall = oldAttrs.postInstall or "" + ''
       wrapProgram $out/bin/st \
-        --append-flags "-e ${startupScript}" \
+        --append-flags "-e ${startupScript}/bin/startupScript" \
     '';
 
     # postBuild = oldAttrs.postBuild or "" + ''
