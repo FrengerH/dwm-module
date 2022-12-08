@@ -6,9 +6,10 @@ let
 in
 {
   dwm = super.dwm.overrideAttrs(oldAttrs: rec {
-    src = super.fetchFromGithub {
-      url = "https://dl.suckless.org/dwm/dwm-6.3.tar.gz";
-      sha256 = "03hirnj8saxnsfqiszwl2ds7p0avg20izv9vdqyambks00p2x44p";
+    src = super.fetchFromGitHub {
+      owner = "FrengerH"
+      repo = "dwm"
+      rev = "d39e2f3441fe18aba8d1a62c08918a411ec6f237"
     };
 
     patches = [
