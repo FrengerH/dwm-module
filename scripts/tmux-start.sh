@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 terminals=$(tmux ls | wc -l)
 if [ $terminals -lt 1 ];
 then
