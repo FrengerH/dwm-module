@@ -3,7 +3,7 @@ self: super:
 with super; 
 
 let
-  theme = builtins.toFile "rofi-theme" (builtins.readFile ../theme/rofi-theme.rasi);
+  theme = builtins.toFile "rofi-theme.rasi" (builtins.readFile ../theme/rofi-theme.rasi);
 in
 {
   rofi = super.rofi.overrideAttrs(oldAttrs: rec {

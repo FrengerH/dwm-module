@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-printf "襤|"
+printf "襤 |"
 
 case $BLOCK_BUTTON in
 	1) notify-send "power 1" ;;
