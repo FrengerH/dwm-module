@@ -36,6 +36,7 @@ in
         [Settings]
         gtk-icon-theme-name=Dracula
         gtk-theme-name=Dracula
+        gtk-cursor-theme-name=Adwaita
       '';
       mode = "444";
     };
