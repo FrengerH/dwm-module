@@ -1,6 +1,8 @@
 {
   description = "DWM for Nix";
 
-  outputs = { self, nixpkgs, ... }:
+  outputs = { self, nixpkgs, ... }: {
+
+  };
 }
 
