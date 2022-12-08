@@ -6,6 +6,6 @@
   outputs = { self, nixpkgs, ... }:
     {
       dwm = import ./dwm;
-    } // utils.lib.eachDefaultSystem (system:
+    }
 }
 
