@@ -3,7 +3,7 @@ self: super:
 with super; 
 
 let
-
+  startupScript = super.writeShellScriptBin "startupScript" (builtins.readFile ../scripts/tmux-start.sh); 
 in
 {
   st = super.st.overrideAttrs(olsattrs: rec {
@@ -17,5 +17,10 @@ in
     patches = [
       ./patches/st.diff
     ];
+
+    postBuild = ''
+      wrapProgram $out/bin/st \
+      --append-flags "-e ${startupScript}" \
+    '';
   });
 }
