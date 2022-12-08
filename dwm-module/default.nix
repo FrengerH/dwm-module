@@ -7,6 +7,11 @@ in
         experimental-features = nix-command flakes
     '';
 
+    sound.enable = true;
+    hardware.pulseaudio.enable = true;
+    hardware.pulseaudio.package = pkgs.pulseaudioFull;
+    hardware.enableAllFirmware  = true;
+
     users.defaultUserShell = pkgs.fish;
 
     services.xserver.libinput.enable = true;
