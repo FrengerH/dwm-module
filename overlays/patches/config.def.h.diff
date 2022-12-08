@@ -131,7 +131,7 @@
 +
 +static const char *roficmd[]       = { "rofi", "-show", "drun", "-show-icons", NULL };
 +static const char *powermenucmd[]  = { NULL };
-+static const char *termcmd[]       = { "st", NULL };
++static const char *termcmd[]       = { "st", "-n", "st", NULL };
 +static const char *browsercmd[]    = { "firefox-esr", NULL };
 +static const char *filescmd[]      = { "nautilus", NULL };
 +static const char *flameshotcmd[]  = { "flameshot", "gui", NULL };
