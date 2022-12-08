@@ -6,7 +6,7 @@ let
   startupScript = super.writeShellScriptBin "startupScript" (builtins.readFile ../scripts/tmux-start.sh); 
 in
 {
-  st = super.st.overrideAttrs(olsattrs: rec {
+  st = super.st.overrideAttrs(oldAttrs: rec {
     buildInputs = oldAttrs.buildInputs or [] ++ [ pkgs.makeWrapper ];
 
     src = super.fetchFromGitHub {
