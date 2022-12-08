@@ -15,6 +15,7 @@
     #     pulseaudio = true;
     #   };
     # };   
+    lib = nixpkgs.lib;
 
     dwm-module = import ./dwm-module;
   };
