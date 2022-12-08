@@ -66,7 +66,7 @@ in
       fish = import ../programs/fish.nix;    
       nm-applet.enable = true;
       rofi = {
-        theme = ${rofiTheme}
+        theme = "${rofiTheme}";
       };
     };
 
