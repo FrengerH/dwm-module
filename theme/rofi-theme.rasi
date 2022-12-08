@@ -21,7 +21,7 @@ configuration {
 }
 
 * {
-    font:				 	"Iosevka 10";
+    font:				 	"FiraCode 10";
 }
 
 window {
@@ -51,7 +51,7 @@ textbox-prompt-colon {
     background-color:               @SEL;
     text-color:                     @FG;
     padding:                        8px 12px 8px 12px;
-    font:			                "Iosevka Nerd Font 10";
+    font:			                "FiraCode Nerd Font 10";
 }
 
 entry {
