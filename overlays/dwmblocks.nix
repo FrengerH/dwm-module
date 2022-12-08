@@ -6,14 +6,12 @@ let
   powerMenu = import ../scripts/dwmblocks/power-menu.nix { inherit pkgs; };
   calendar = super.writeShellScriptBin "calendar" (builtins.readFile ../scripts/dwmblocks/calendar.sh);
   power = super.writeShellScriptBin "power" (builtins.readFile ../scripts/dwmblocks/power.sh);
-  power2 = super.writeShellScriptBin "power2" (builtins.readFile ../scripts/dwmblocks/power2.sh);
 
   configFile = super.writeText "config.h" ''
     static Block blocks[] = {
     /*      pathu                                  interval        signal */
       BLOCK("${calendar.outPath}/bin/calendar",    30,             3),
-      BLOCK("${power.outPath}/bin/power",          30,             4),
-      BLOCK("${power2.outPath}/bin/power2",        30,             5)
+      BLOCK("${power.outPath}/bin/power",          30,             4)
     };
 
     // Maximum possible length of output from block, expressed in number of characters.

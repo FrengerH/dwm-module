@@ -25,9 +25,5 @@ in
         --append-flags "-e ${startupScript}/bin/startupScript" \
     '';
 
-    # postBuild = oldAttrs.postBuild or "" + ''
-    #   wrapProgram $out/bin/st \
-    #   --add-flags "-e ${startupScript}" \
-    # '';
   });
 }
