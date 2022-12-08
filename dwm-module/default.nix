@@ -58,7 +58,7 @@ in
       dunst
       pavucontrol
       alsa-firmware
-      (pkgs.callPackage ./programs/rofi.nix {
+      (pkgs.callPackage ../programs/rofi.nix {
         theme = builtins.toFile "rofi-theme.rasi" (
           builtins.readFile ../theme/rofi-theme.rasi
         );
