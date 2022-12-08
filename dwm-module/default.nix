@@ -3,6 +3,10 @@
 let
 in
   {
+    nix.extraOptions = ''
+        experimental-features = nix-command flakes
+    '';
+
     users.defaultUserShell = pkgs.fish;
 
     services.xserver.libinput.enable = true;
@@ -36,6 +40,7 @@ in
 
     environment.systemPackages = with pkgs; [
       st
+      git
       feh
       rofi
       lightlocker
@@ -45,6 +50,8 @@ in
       dwmblocks
       libnotify
       dunst
+      pavucontrol
+      alsa-firmware
     ];
 
     programs = {
