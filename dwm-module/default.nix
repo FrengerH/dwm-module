@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 let
+  rofiPkgs = import ../programs/rofi.nix { pkgs = pkgs; };
 in
   {
     nix.extraOptions = ''
@@ -57,11 +58,13 @@ in
       dunst
       pavucontrol
       alsa-firmware
-      (pkgs.callPackage ../programs/rofi.nix {
-        theme = builtins.toFile "rofi-theme.rasi" (
-          builtins.readFile ../theme/rofi-theme.rasi
-        );
-      })
+      rofi
+      rofiPkgs.power-menu
+      # (pkgs.callPackage ../programs/rofi.nix {
+      #   theme = builtins.toFile "rofi-theme.rasi" (
+      #     builtins.readFile ../theme/rofi-theme.rasi
+      #   );
+      # })
     ];
 
     programs = {

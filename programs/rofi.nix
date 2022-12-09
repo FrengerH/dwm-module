@@ -1,47 +1,139 @@
-{ symlinkJoin, lib, rofi-unwrapped, makeWrapper, wrapGAppsHook, gdk-pixbuf, hicolor-icon-theme, theme ? null, plugins ? [], symlink-dmenu ? false, name ? "rofi" }:
+{ pkgs }:
 
-symlinkJoin {
-  name = "${name}-${rofi-unwrapped.version}";
+let
+  launcherTheme = builtins.toFile "rofi-theme.rasi" (builtins.readFile ../theme/rofi-theme.rasi);
+  powerMenuTheme = builtins.toFile "power-menu.rasi" (builtins.readFile ../theme/power-menu.rasi);
+in
+  {
+    launcher = pkgs.writeShellScriptBin "launcher" ''
+      
+    '';
 
-  paths = [
-    rofi-unwrapped.out
-  ] ++ (lib.forEach plugins (p: p.out));
+    power-menu = pkgs.writeShellScriptBin "power-menu" ''
+      THEME="${powerMenuTheme}"
 
-  nativeBuildInputs = [ makeWrapper wrapGAppsHook ];
-  buildInputs = [ gdk-pixbuf ];
+      rofi_command="rofi -theme $THEME"
 
-  preferLocalBuild = true;
-  passthru.unwrapped = rofi-unwrapped;
+      uptime=$(uptime -p | sed -e 's/up //g')
 
-  dontWrapGApps = true;
+      # Options
+      if [[ "$DIR" == "powermenus" ]]; then
+          shutdown="襤"
+          reboot="ﰇ"
+          lock=""
+          suspend="鈴"
+          logout=" "
+          # shutdown=""
+          # reboot=""
+          # lock=""
+          # suspend=""
+          # logout=""
+          # ddir="$HOME/.config/rofi/config"
+      else
 
-  postBuild = ''
-    rm -rf $out/bin
-    mkdir $out/bin
-    ln -s ${rofi-unwrapped}/bin/* $out/bin
-    rm $out/bin/rofi
+      # For some reason the Icons are mess up I don't know why but to fix it uncomment section 2 and comment section 1 but if the section 1 icons are mess up uncomment section 2 and comment section 1
 
-    gappsWrapperArgsHook
+          # Buttons
+          layout=`cat $THEME | grep BUTTON | cut -d'=' -f2 | tr -d '[:blank:],*/'`
+          if [[ "$layout" == "TRUE" ]]; then
+            # # Section 1
 
-    makeWrapper ${rofi-unwrapped}/bin/rofi $out/bin/power-menu \
+            #   shutdown=""
+            #   reboot=""
+            #   lock=""
+            #   suspend=""
+            #   logout=""
+            # Section 2
+                shutdown="襤"
+                reboot="ﰇ"
+                lock=""
+                suspend="鈴"
+                logout=" "
 
 
-    makeWrapper ${rofi-unwrapped}/bin/rofi $out/bin/${name} \
-      ''${gappsWrapperArgs[@]} \
-      --prefix XDG_DATA_DIRS : ${hicolor-icon-theme}/share \
-      ${lib.optionalString (plugins != []) ''--prefix XDG_DATA_DIRS : ${lib.concatStringsSep ":" (lib.forEach plugins (p: "${p.out}/share"))}''} \
-      ${lib.optionalString (theme != null) ''--add-flags "-theme ${theme}"''} \
-      ${lib.optionalString (plugins != []) ''--add-flags "-plugin-path $out/lib/${name}"''}
+          else
+            # # Section 1
+            #   shutdown=" Shutdown"
+            #   reboot=" Restart"
+            #   lock=" Lock"
+            #   suspend=" Sleep"
+            #   logout=" Logout"
+            # Section 2
+                shutdown="襤Shutdown"
+                reboot="ﰇ Restart"
+                lock=" Lock"
+                suspend="鈴Sleep"
+                logout=" Logout"
+          fi
+          # ddir="$HOME/.config/rofi/config"
+      fi
 
-    ${lib.optionalString symlink-dmenu "ln -s ${rofi-unwrapped}/bin/rofi $out/bin/dmenu"}
-    rm ${rofi-unwrapped}/bin/rofi-theme-selector
-    rm $out/bin/rofi-theme-selector
-    rm ${rofi-unwrapped}/bin/rofi-sensible-terminal
-    rm $out/bin/rofi-sensible-terminal
-  '';
+      # Ask for confirmation
+      rdialog () {
+      rofi -dmenu\
+          -i\
+          -no-fixed-num-lines\
+          -p "Are You Sure? : "\
+          -theme "$ddir/confirm.rasi"
+      }
 
-  meta = rofi-unwrapped.meta // {
-    priority = (rofi-unwrapped.meta.priority or 0) - 1;
-  };
-}
+      # Display Help
+      show_msg() {
+          rofi -theme "$ddir/askpass.rasi" -e "Options : yes / no / y / n"
+      }
 
+      # Variable passed to rofi
+      options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
+
+      chosen="$(echo -e "$options" | $rofi_command -p "UP - $uptime" -dmenu -selected-row 0)"
+      case $chosen in
+          $shutdown)
+              ans=$(rdialog &)
+              if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+                  systemctl poweroff
+              elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
+                  exit
+              else
+                  show_msg
+              fi
+              ;;
+          $reboot)
+              ans=$(rdialog &)
+              if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+                  systemctl reboot
+              elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
+                  exit
+              else
+                  show_msg
+              fi
+              ;;
+          $lock)
+              # sh $HOME/.local/bin/lock
+              ;;
+          $suspend)
+              ans=$(rdialog &)
+              if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+                  mpc -q pause
+                  amixer set Master mute
+                  # sh $HOME/.local/bin/lock
+                  systemctl suspend
+              elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
+                  exit
+              else
+                  show_msg
+              fi
+              ;;
+          $logout)
+              ans=$(rdialog &)
+              if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+                  bspc quit
+              elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
+                  exit
+              else
+                  show_msg
+              fi
+              ;;
+      esac
+
+    '';
+  }
