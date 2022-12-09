@@ -60,6 +60,7 @@ in
       alsa-firmware
       rofi
       rofiPkgs.power-menu
+      rofiPkgs.launcher
       # (pkgs.callPackage ../programs/rofi.nix {
       #   theme = builtins.toFile "rofi-theme.rasi" (
       #     builtins.readFile ../theme/rofi-theme.rasi
