@@ -35,8 +35,8 @@ in
     environment.etc."xdg/gtk-3.0/settings.ini" = {
       text = ''
         [Settings]
-        gtk-icon-theme-name=catppuccin-gtk-theme-mocha
-        gtk-theme-name=catppuccin-gtk-theme-mocha
+        gtk-icon-theme-name=Dracula
+        gtk-theme-name=Catppuccin-Green-Dark
         gtk-cursor-theme-name=Adwaita
       '';
       mode = "444";
