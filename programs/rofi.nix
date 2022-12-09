@@ -1,4 +1,4 @@
-{ symlinkJoin, lib, rofi-unwrapped, makeWrapper, wrapGAppsHook, gdk-pixbuf, hicolor-icon-theme, theme ? null, plugins ? [], symlink-dmenu ? true, name ? "rofit" }:
+{ symlinkJoin, lib, rofi-unwrapped, makeWrapper, wrapGAppsHook, gdk-pixbuf, hicolor-icon-theme, theme ? null, plugins ? [], symlink-dmenu ? false, name ? "rofi" }:
 
 symlinkJoin {
   name = "${name}-${rofi-unwrapped.version}";
@@ -22,6 +22,10 @@ symlinkJoin {
     rm $out/bin/rofi
 
     gappsWrapperArgsHook
+
+    makeWrapper ${rofi-unwrapped}/bin/rofi $out/bin/power-menu \
+
+
     makeWrapper ${rofi-unwrapped}/bin/rofi $out/bin/${name} \
       ''${gappsWrapperArgs[@]} \
       --prefix XDG_DATA_DIRS : ${hicolor-icon-theme}/share \
@@ -30,7 +34,10 @@ symlinkJoin {
       ${lib.optionalString (plugins != []) ''--add-flags "-plugin-path $out/lib/${name}"''}
 
     ${lib.optionalString symlink-dmenu "ln -s ${rofi-unwrapped}/bin/rofi $out/bin/dmenu"}
+    rm ${rofi-unwrapped}/bin/rofi-theme-selector
     rm $out/bin/rofi-theme-selector
+    rm ${rofi-unwrapped}/bin/rofi-sensible-terminal
+    rm $out/bin/rofi-sensible-terminal
   '';
 
   meta = rofi-unwrapped.meta // {
