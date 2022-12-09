@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 
 let
-  rofiTheme = builtins.toFile "rofiTheme.rasi" (builtins.readFile ../theme/rofi-theme.rasi);
 in
   {
     nix.extraOptions = ''
