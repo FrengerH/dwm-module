@@ -1,7 +1,7 @@
 { pkgs }:
 
 let
-  powerTheme = builtins.toFile "power-theme.rasi" (builtins.readFile ../../themes/power-menu.rasi);
+  powerTheme = builtins.toFile "power-theme.rasi" (builtins.readFile ../../theme/power-menu.rasi);
   powerMenu = pkgs.writeShellScriptBin "powerMenu" ''
     THEME="${powerTheme}"
 
