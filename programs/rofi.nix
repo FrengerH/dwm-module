@@ -25,12 +25,6 @@ in
           lock=""
           suspend="鈴"
           logout=" "
-          # shutdown=""
-          # reboot=""
-          # lock=""
-          # suspend=""
-          # logout=""
-          # ddir="$HOME/.config/rofi/config"
       else
 
       # For some reason the Icons are mess up I don't know why but to fix it uncomment section 2 and comment section 1 but if the section 1 icons are mess up uncomment section 2 and comment section 1
@@ -38,13 +32,6 @@ in
           # Buttons
           layout=`cat $THEME | grep BUTTON | cut -d'=' -f2 | tr -d '[:blank:],*/'`
           if [[ "$layout" == "TRUE" ]]; then
-            # # Section 1
-
-            #   shutdown=""
-            #   reboot=""
-            #   lock=""
-            #   suspend=""
-            #   logout=""
             # Section 2
                 shutdown="襤"
                 reboot="ﰇ"
@@ -54,12 +41,6 @@ in
 
 
           else
-            # # Section 1
-            #   shutdown=" Shutdown"
-            #   reboot=" Restart"
-            #   lock=" Lock"
-            #   suspend=" Sleep"
-            #   logout=" Logout"
             # Section 2
                 shutdown="襤Shutdown"
                 reboot="ﰇ Restart"
@@ -67,7 +48,6 @@ in
                 suspend="鈴Sleep"
                 logout=" Logout"
           fi
-          # ddir="$HOME/.config/rofi/config"
       fi
 
       # Ask for confirmation
@@ -110,16 +90,13 @@ in
               fi
               ;;
           $lock)
-              # sh $HOME/.local/bin/lock
+              sh $(which light-locker-command) -l
               ;;
           $suspend)
               ans=$(rdialog &)
               if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
-                  mpc -q pause
-                  amixer set Master mute
-                  # sh $HOME/.local/bin/lock
                   systemctl suspend
-              elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
+              `elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
                   exit
               else
                   show_msg
@@ -128,7 +105,7 @@ in
           $logout)
               ans=$(rdialog &)
               if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
-                  bspc quit
+                  loginctl kill-session $XDG_SESSION_ID
               elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
                   exit
               else
