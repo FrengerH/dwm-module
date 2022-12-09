@@ -96,7 +96,7 @@ in
               ans=$(rdialog &)
               if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
                   systemctl suspend
-              `elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
+              elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
                   exit
               else
                   show_msg
@@ -105,7 +105,7 @@ in
           $logout)
               ans=$(rdialog &)
               if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
-                  loginctl kill-session $XDG_SESSION_ID
+                  sh loginctl kill-session $XDG_SESSION_ID
               elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
                   exit
               else
