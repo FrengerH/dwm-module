@@ -36,7 +36,7 @@ window {
     border-radius:                  10px;
     width:                          110px;
     x-offset:                       -1%;
-    y-offset:                       0;
+    y-offset:                       10px;
 }
 
 prompt {
