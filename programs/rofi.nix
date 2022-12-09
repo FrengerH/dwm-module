@@ -3,10 +3,12 @@
 let
   launcherTheme = builtins.toFile "rofi-theme.rasi" (builtins.readFile ../theme/rofi-theme.rasi);
   powerMenuTheme = builtins.toFile "power-menu.rasi" (builtins.readFile ../theme/power-menu.rasi);
+  confirmTheme = builtins.toFile "confirm.rasi" (builtins.readFile ../theme/confirm.rasi);
+  askPassTheme = builtins.toFile "askpass.rasi" (builtins.readFile ../theme/askpass.rasi);
 in
   {
     launcher = pkgs.writeShellScriptBin "launcher" ''
-      
+      rofi -theme ${launcherTheme} -show drun       
     '';
 
     power-menu = pkgs.writeShellScriptBin "power-menu" ''
@@ -74,12 +76,12 @@ in
           -i\
           -no-fixed-num-lines\
           -p "Are You Sure? : "\
-          -theme "$ddir/confirm.rasi"
+          -theme "${confirmTheme}"
       }
 
       # Display Help
       show_msg() {
-          rofi -theme "$ddir/askpass.rasi" -e "Options : yes / no / y / n"
+          rofi -theme "${askPassTheme}" -e "Options : yes / no / y / n"
       }
 
       # Variable passed to rofi
