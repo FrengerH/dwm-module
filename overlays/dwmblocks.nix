@@ -11,7 +11,7 @@ let
     static Block blocks[] = {
     /*      pathu                                  interval        signal */
       BLOCK("${calendar.outPath}/bin/calendar",    30,             3),
-      BLOCK("${power.outPath}/bin/power",          30,             4)
+      BLOCK("${power.outPath}/bin/power ${powerMenu}",          30,             4)
     };
 
     // Maximum possible length of output from block, expressed in number of characters.
