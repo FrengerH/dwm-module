@@ -10,8 +10,8 @@ in
     src = super.fetchFromGitHub {
       owner = "FrengerH";
       repo = "tmux-dracula";
-      rev = "a23870719534a33f14021cb46bfa160f1b6ab542";
-      sha256 = "sha256-MYV0A4VfzLL/HewaY8Oefqeer4V8iAyk81CfJZCjxTY=";
+      rev = "38917579809cd9ecd17c13d5ffd724a1615544fe";
+      sha256 = "";
     };
   });
 }

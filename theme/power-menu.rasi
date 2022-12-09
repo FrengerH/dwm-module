@@ -13,10 +13,10 @@ configuration {
 
 * {
     BG:    #1E1D2Fff;
-    BGA:   #ABE9B3ff;
+    BGA:   #008080ff;
     FG:    #D9E0EEff;
     FGA:   #F28FADff;
-    BDR:   #94E2D5ff;
+    BDR:   #008080ff;
     SEL:   #1E1E2Eff;
     UGT:   #F28FADff;
     IMG:   #FAE3B0ff;
