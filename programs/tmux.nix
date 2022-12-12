@@ -18,8 +18,10 @@
 
     set -ga terminal-overrides ",st-256color"
     # set -g default-terminal "tmux-256color"
-    set -g default-terminal "xterm-256color"
-    set-option -ga terminal-overrides ",xterm-256color:Tc"
+    # set -g default-terminal "xterm-256color"
+    # set-option -ga terminal-overrides ",xterm-256color:Tc"
+    set -g default-terminal "tmux-256color"
+    set -ga terminal-overrides ",*256col*:Tc"
 
     set -g escape-time 10
 
