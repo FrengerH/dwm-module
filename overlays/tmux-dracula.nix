@@ -11,7 +11,7 @@ in
       owner = "FrengerH";
       repo = "tmux-dracula";
       rev = "fa5ff39f8ed920ed6d4a7786ca4b8da2ac57125f";
-      sha256 = "";
+      sha256 = "sha256-Sl/LqwWCJBarn7ue/C+QRFYnrZegnyAWYtNLU+6BoKo=";
     };
   });
 }
