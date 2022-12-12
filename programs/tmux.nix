@@ -17,7 +17,9 @@
     set -g window-size largest
 
     set -ga terminal-overrides ",st-256color"
-    set -g default-terminal "tmux-256color"
+    # set -g default-terminal "tmux-256color"
+    set -g default-terminal "xterm-256color"
+i   set-option -ga terminal-overrides ",xterm-256color:Tc"
 
     set -g escape-time 10
 

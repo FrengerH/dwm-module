@@ -34,7 +34,7 @@
     set -U fish_color_autosuggestion 6c7086
     set -U fish_color_cancel f38ba8
     set -U fish_color_cwd f9e2af
-    set -U fish_color_user 94e2d5ff
+    set -U fish_color_user 94e2d5
     set -U fish_color_host 89b4fa
     set -U fish_pager_color_progress 6c7086
     set -U fish_pager_color_prefix f5c2e7
