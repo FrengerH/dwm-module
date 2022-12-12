@@ -20,8 +20,8 @@
  static const char col_gray2[]       = "#444444";
  static const char col_gray3[]       = "#bbbbbb";
  static const char col_gray4[]       = "#eeeeee";
--static const char col_cyan[]        = "#005577";
-+static const char col_cyan[]        = "#6495ed";
+ static const char col_cyan[]        = "#005577";
+# +static const char col_cyan[]        = "#6495ed";
 +static const char col1[]            = "#ffffff";
 +static const char col2[]            = "#ffffff";
 +static const char col3[]            = "#ffffff";
