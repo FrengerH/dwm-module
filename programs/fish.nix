@@ -81,23 +81,23 @@
       switch $fish_bind_mode
         case default
           echo -en "\e[2 q"
-          set_color -c red #red
+          set_color -o red #red
           echo "[N] "
         case insert
           echo -en "\e[6 q"
-          set_color -c green #green
+          set_color -o green #green
           echo "[I] "
         case replace_one
           echo -en "\e[4 q"
-          set_color -c yellow #yellow
+          set_color -o yellow #yellow
           echo "[R] "
         case visual
           echo -en "\e[2 q"
-          set_color -c purple #magenta
+          set_color -o purple #magenta
           echo "[V] "
         case '*'
           echo -en "\e[2 q"
-          set_color -c red #red
+          set_color -o red #red
           echo "[?] "
       end
       set_color normal
