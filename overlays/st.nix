@@ -13,6 +13,7 @@ in
 
     src = fetchurl {
       url = "https://dl.suckless.org/st/st-${version}.tar.gz";
+      sha256 = "sha256-6mgyID7QL/dBgry4raqexFTI+YnnkjLLhZZl4vVEqzc=";
     };
 
     buildInputs = oldAttrs.buildInputs or [] ++ [ pkgs.makeWrapper ];
