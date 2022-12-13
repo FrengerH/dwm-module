@@ -3,7 +3,7 @@ self: super:
 with super;
 
 let
-  dwmConfig = writeText "config.def.h" builtins.readFile(../overlays/configs/dwm.conf);
+  dwmConfig = builtins.readFile(../overlays/configs/dwm.conf);
 in
 {
   dwm = super.dwm.overrideAttrs(oldAttrs: rec {
@@ -29,6 +29,11 @@ in
       # ./patches/config.def.h.diff
     ];
 
-    postPatch = "cp ${dwmConfig} config.def.h";
+    postPatch =
+      let
+        configFile = writeText "config.def.h" dwmConfig;
+      in
+      "cp ${configFile} config.def.h";
+
   });
 }
