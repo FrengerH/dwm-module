@@ -18,7 +18,7 @@ in
 
     buildInputs = oldAttrs.buildInputs or [] ++ [ pkgs.makeWrapper ];
 
-    configFile = stConfig;
+    postPatch = "cp ${stConfig} config.def.h"
 
     # src = super.fetchFromGitHub {
     #   owner = "FrengerH";
