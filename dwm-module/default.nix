@@ -24,7 +24,7 @@ in
     services.xserver.displayManager.lightdm.enable = true;
     services.xserver.windowManager.dwm = {
       enable = true;
-      conf = dwmConfig
+      conf = dwmConfig;
     };
 
     fonts.fonts = with pkgs; [
