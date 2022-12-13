@@ -12,7 +12,7 @@ in
     version = "0.8.5";
 
     src = fetchurl {
-      url = "https://dl.suckless.org/st/st-${finalAttrs.version}.tar.gz";
+      url = "https://dl.suckless.org/st/st-${version}.tar.gz";
     };
 
     buildInputs = oldAttrs.buildInputs or [] ++ [ pkgs.makeWrapper ];
