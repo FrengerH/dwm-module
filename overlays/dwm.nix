@@ -12,6 +12,7 @@ in
 
     src = fetchurl {
       url = "https://dl.suckless.org/dwm/${pname}-${version}.tar.gz";
+      sha256 = "sha256-utqgKFKbH7of1/moTztk8xGQRmyFgBG1Pi97cMajB40=";
     };
 
     # src = super.fetchFromGitHub {
