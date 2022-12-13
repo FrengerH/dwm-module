@@ -3,6 +3,7 @@ self: super:
 with super;
 
 let
+  dwmConfig = builtins.readFile(../overlays/configs/dwm.conf);
 in
 {
   dwm = super.dwm.overrideAttrs(oldAttrs: rec {
@@ -26,5 +27,7 @@ in
       ./patches/movestack.c.diff
       # ./patches/config.def.h.diff
     ];
+
+    conf = dwmConfig;
   });
 }

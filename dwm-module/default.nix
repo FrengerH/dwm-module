@@ -2,7 +2,6 @@
 
 let
   rofiPkgs = import ../programs/rofi.nix { pkgs = pkgs; };
-  dwmConfig = builtins.readFile(../overlays/configs/dwm.conf);
 in
   {
     nix.extraOptions = ''
@@ -24,7 +23,6 @@ in
     services.xserver.displayManager.lightdm.enable = true;
     services.xserver.windowManager.dwm = {
       enable = true;
-      package = pkgs.dwm { conf = dwmConfig; };
     };
 
     fonts.fonts = with pkgs; [
