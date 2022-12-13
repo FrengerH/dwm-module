@@ -29,6 +29,6 @@ in
       # ./patches/config.def.h.diff
     ];
 
-    conf = dwmConfig;
+    conf = ${dwmConfig};
   });
 }
