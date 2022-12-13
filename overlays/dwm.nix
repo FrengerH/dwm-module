@@ -29,6 +29,6 @@ in
       # ./patches/config.def.h.diff
     ];
 
-    conf = ${dwmConfig};
+    postPatch = "cp ${dwmConfig} config.def.h";
   });
 }
