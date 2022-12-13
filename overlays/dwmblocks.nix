@@ -8,9 +8,9 @@ let
 
   configFile = super.writeText "config.h" ''
     static Block blocks[] = {
-    /*      pathu                                  interval        signal */
-      BLOCK("${calendar.outPath}/bin/calendar",    30,             3),
-      BLOCK("${power.outPath}/bin/power power-menu",          30,             4)
+    /*      pathu                                       interval        signal */
+      BLOCK("${calendar.outPath}/bin/calendar",         30,             3),
+      BLOCK("${power.outPath}/bin/power power-menu",    30,             4)
     };
 
     // Maximum possible length of output from block, expressed in number of characters.
@@ -36,9 +36,7 @@ in
       sha256 = "sha256-98jNhV1HvWKHucIHxD/8Q0rz74vu5W3MQ4Nd7LmwDyA=";
     };
 
-    postPatch = ''
-      cp ${configFile} config.h
-    '';
+    postPatch = "cp ${configFile} config.h";
 
   });
 }
