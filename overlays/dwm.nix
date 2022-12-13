@@ -3,7 +3,7 @@ self: super:
 with super;
 
 let
-  dwmConfig = builtins.readFile(../overlays/configs/dwm.conf);
+  dwmConfig = writeText "config.def.h" builtins.readFile(../overlays/configs/dwm.conf);
 in
 {
   dwm = super.dwm.overrideAttrs(oldAttrs: rec {
