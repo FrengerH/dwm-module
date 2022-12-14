@@ -73,7 +73,7 @@ in
       nm-applet.enable = true;
       starship = {
         enable = true;
-        settings = "{ ${startshipConfig} }";
+        settings = {"${startshipConfig}"};
       };
     };
 
