@@ -3,11 +3,11 @@
     BGA:   #005577ff;
     FG:    #D9E0EEff;
     FGA:   #F28FADff;
-    BDR:   #008080ff;
-    SEL:   #1E1E2Eff;
+    BDR:   #005577ff;
+    SEL:   #BAC2DEff;
     UGT:   #F28FADff;
     IMG:   #FAE3B0ff;
-    OFF:   #D9E0EEff;
+    OFF:   #585B70ff;
     ON:    #005577ff;
 }
 
