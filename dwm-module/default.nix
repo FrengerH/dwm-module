@@ -2,7 +2,7 @@
 
 let
   rofiPkgs = import ../programs/rofi.nix { pkgs = pkgs; };
-  startshipConfig = builtins.readFile ../overlays/configs/starship.conf.toml;
+  startshipConfig = pkgs.writeText "starship.toml" (builtins.readFile ../overlays/configs/starship.conf.toml);
 in
   {
     nix.extraOptions = ''
@@ -73,7 +73,7 @@ in
       nm-applet.enable = true;
       starship = {
         enable = true;
-        settings = "${startshipConfig}";
+        settings = "tomlfile ${startshipConfig}";
       };
     };
 
