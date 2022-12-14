@@ -31,8 +31,8 @@ textbox-prompt-colon {
     expand: 			            false;
     str: 			                "";
     border-radius:                  100%;
-    background-color:               @SEL;
-    text-color:                     @FG;
+    background-color:               @BGA;
+    text-color:                     @SEL;
     padding:                        8px 12px 8px 12px;
     font:			                "FiraCode Nerd Font 10";
 }
