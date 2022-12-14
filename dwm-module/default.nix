@@ -2,6 +2,7 @@
 
 let
   rofiPkgs = import ../programs/rofi.nix { pkgs = pkgs; };
+  startshipConfig = builtins.readFile ../overlays/configs/starship.conf.toml;
 in
   {
     nix.extraOptions = ''
@@ -70,7 +71,10 @@ in
       tmux = import ../programs/tmux.nix { pkgs = pkgs; };
       fish = import ../programs/fish.nix;    
       nm-applet.enable = true;
-      starship.enable = true;
+      starship = {
+        enable = true;
+        settings = startshipConfig;
+      };
     };
 
     nixpkgs.overlays = map import [ 
