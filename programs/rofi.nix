@@ -1,10 +1,12 @@
 { pkgs }:
 
 let
-  launcherTheme = builtins.toFile "rofi-theme.rasi" (builtins.readFile ../theme/rofi-theme.rasi);
-  powerMenuTheme = builtins.toFile "power-menu.rasi" (builtins.readFile ../theme/power-menu.rasi);
-  confirmTheme = builtins.toFile "confirm.rasi" (builtins.readFile ../theme/confirm.rasi);
-  askPassTheme = builtins.toFile "askpass.rasi" (builtins.readFile ../theme/askpass.rasi);
+  font = (builtins.readFile ../theme/font.rasi);
+  colors = (builtins.readFile ../theme/colors.rasi);
+  launcherTheme = builtins.toFile "rofi-theme.rasi" font + colors + (builtins.readFile ../theme/rofi-theme.rasi);
+  powerMenuTheme = builtins.toFile "power-menu.rasi" font + colors + (builtins.readFile ../theme/power-menu.rasi);
+  confirmTheme = builtins.toFile "confirm.rasi" font + colors + (builtins.readFile ../theme/confirm.rasi);
+  askPassTheme = builtins.toFile "askpass.rasi" font + colors + (builtins.readFile ../theme/askpass.rasi);
 in
   {
     launcher = pkgs.writeShellScriptBin "launcher" ''

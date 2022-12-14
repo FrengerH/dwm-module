@@ -66,8 +66,8 @@
     #   style = "bright-green bold";
     # };
     character = {
-      success_symbol = "[\\$](bright-green bold)";
-      error_symbol = "[\\$](bright-red bold)";
+      success_symbol = "[➜](bright-green bold)";
+      error_symbol = "[✗](bright-red bold)";
     };
   };
 }
