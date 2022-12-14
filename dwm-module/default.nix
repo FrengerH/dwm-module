@@ -70,6 +70,7 @@ in
       tmux = import ../programs/tmux.nix { pkgs = pkgs; };
       fish = import ../programs/fish.nix;    
       nm-applet.enable = true;
+      starship.enable = true;
     };
 
     nixpkgs.overlays = map import [ 
